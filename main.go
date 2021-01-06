@@ -17,7 +17,7 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "Nexus docker image clean CLI"
 	app.Usage = "Manage Docker Private Registry on Nexus"
-	app.Version = "1.0.0-beta"
+	app.Version = "1.0.0"
 	app.Authors = []*cli.Author{
 		{
 			Name:  "XMapst",

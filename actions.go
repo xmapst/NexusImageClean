@@ -3,12 +3,12 @@ package main
 import (
 	"NexusImageClean/nexus"
 	"fmt"
-	"github.com/liushuochen/gotable"
+	"github.com/jedib0t/go-pretty/table"
 	"github.com/urfave/cli/v2"
 	"gopkg.in/yaml.v2"
 	"log"
+	"os"
 	"sort"
-	"strconv"
 	"strings"
 )
 
@@ -31,24 +31,17 @@ func listImagesAction(c *cli.Context) error {
 	if len(res.Result.Data) == 0 {
 
 	}
-	tplHead := []string{"Path", "Name", "Type", "Leaf"}
-	tpl, err := gotable.CreateTable(tplHead)
-	if err != nil {
-		log.Println(err)
-	}
+
+	tpl := table.NewWriter()
+	tpl.SetOutputMirror(os.Stdout)
+	tpl.SetStyle(table.StyleLight)
+	tpl.AppendHeader(table.Row{"Path", "Name", "Type", "Leaf"})
 	for _, image := range res.Result.Data {
-		tableValues := make(map[string]gotable.Sequence)
-		tableValues["Path"] = gotable.TableValue(image.ID)
-		tableValues["Name"] = gotable.TableValue(image.Text)
-		tableValues["Type"] = gotable.TableValue(image.Type)
-		tableValues["Leaf"] = gotable.TableValue(strconv.FormatBool(image.Leaf))
-		err = tpl.AddValue(tableValues)
-		if err != nil {
-			log.Println(err)
-		}
+		tpl.AppendRow([]interface{}{image.ID, image.Text, image.Type, image.Leaf})
 	}
-	tpl.PrintTable()
-	fmt.Println("Count:", len(res.Result.Data))
+	//tpl.AppendSeparator()
+	tpl.AppendFooter(table.Row{"Total", len(res.Result.Data), "", ""})
+	tpl.Render()
 	return nil
 }
 
@@ -64,27 +57,16 @@ func listTagsByImage(c *cli.Context) error {
 	if err != nil {
 		return err
 	}
-	tplHead := []string{"ComponentID", "AssetID", "Path", "ImageName", "TagName", "Type", "Leaf"}
-	tpl, err := gotable.CreateTable(tplHead)
-	if err != nil {
-		log.Println(err)
-	}
+
+	tpl := table.NewWriter()
+	tpl.SetOutputMirror(os.Stdout)
+	tpl.SetStyle(table.StyleLight)
+	tpl.AppendHeader(table.Row{"ComponentID", "AssetID", "Path", "ImageName", "TagName", "Type", "Leaf"})
 	for _, tag := range tagsRes.Result.Data {
-		tableValues := make(map[string]gotable.Sequence)
-		tableValues["ComponentID"] = gotable.TableValue(tag.ComponentID)
-		tableValues["AssetID"] = gotable.TableValue(tag.AssetID)
-		tableValues["Path"] = gotable.TableValue(tag.ID)
-		tableValues["ImageName"] = gotable.TableValue(imgName)
-		tableValues["TagName"] = gotable.TableValue(tag.Text)
-		tableValues["Type"] = gotable.TableValue(tag.Type)
-		tableValues["Leaf"] = gotable.TableValue(strconv.FormatBool(tag.Leaf))
-		err = tpl.AddValue(tableValues)
-		if err != nil {
-			log.Println(err)
-		}
+		tpl.AppendRow([]interface{}{tag.ComponentID, tag.AssetID, tag.ID, imgName, tag.Text, tag.Type, tag.Leaf})
 	}
-	tpl.PrintTable()
-	fmt.Println("Count:", len(tagsRes.Result.Data))
+	tpl.AppendFooter(table.Row{"Total", len(tagsRes.Result.Data), "", ""})
+	tpl.Render()
 	return nil
 }
 

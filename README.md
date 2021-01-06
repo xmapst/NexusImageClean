@@ -20,7 +20,7 @@ USAGE:
    NexusImageClean [global options] command [command options] [arguments...]
 
 VERSION:
-   1.0.0-beta
+   1.0.0
 
 AUTHOR:
    XMapst <xmapst@gmail.com>
@@ -37,12 +37,12 @@ GLOBAL OPTIONS:
 
 ## Download
 
-Below are the available downloads for the latest version of Nexus CLI (1.0.0-beta). Please download the proper package for your operating system and architecture.
+Below are the available downloads for the latest version of Nexus CLI (1.0.0). Please download the proper package for your operating system and architecture.
 
 ### Linux:
 
 ```
-wget https://github.com/xmapst/NexusImageClean/releases/download/1.0.0-beta/NexusImageClean
+wget https://github.com/xmapst/NexusImageClean/releases/download/1.0.0/NexusImageClean
 ```
 
 ## Installation
