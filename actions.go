@@ -1,10 +1,10 @@
 package main
 
 import (
-	"NexusImageClean/nexus"
 	"fmt"
 	"github.com/jedib0t/go-pretty/table"
 	"github.com/urfave/cli/v2"
+	"github.com/xmapst/NexusImageClean/nexus"
 	"gopkg.in/yaml.v2"
 	"log"
 	"os"
@@ -199,7 +199,9 @@ func deleteAction(c *cli.Context) error {
 }
 
 func GetImageTagList(tags *nexus.RepositoryTagsResponse, wg *WaitGroup, reviewsDataChan chan []ReviewsData) {
-	defer wg.Done()
+	if wg != nil {
+		defer wg.Done()
+	}
 	var reviewsData = make(timeSlice, 0, len(tags.Result.Data))
 	for _, tag := range tags.Result.Data {
 		tagInfo, err := client.GetRepositoryTagInfo(tag.AssetID)

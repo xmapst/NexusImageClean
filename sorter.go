@@ -3,10 +3,10 @@ package main
 import "time"
 
 type ReviewsData struct {
-	Date       time.Time
-	ID         string
-	Name       string
-    repositoryName string
+	Date           time.Time
+	ID             string
+	Name           string
+	repositoryName string
 }
 
 type timeSlice []ReviewsData

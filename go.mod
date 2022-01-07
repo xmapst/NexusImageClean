@@ -1,4 +1,4 @@
-module NexusImageClean
+module github.com/xmapst/NexusImageClean
 
 go 1.15
 

@@ -15,7 +15,7 @@ const (
 	RpcEndpoint = "service/extdirect"
 	Asset       = "asset"
 	Folder      = "folder"
-	NotFount = "No found data"
+	NotFount    = "No found data"
 )
 
 // ServerInfo contains the information needed to connect to a Nexus server

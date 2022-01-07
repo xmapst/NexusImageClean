@@ -16,7 +16,7 @@ func Command() cli.Commands {
 				{
 					Name:    "list",
 					Aliases: []string{"ls", "l"},
-					Flags: listFlag(),
+					Flags:   listFlag(),
 					Action:  listImagesAction,
 				},
 				{

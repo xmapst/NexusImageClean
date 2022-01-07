@@ -1,11 +1,11 @@
 package main
 
 import (
-	"NexusImageClean/nexus"
 	"errors"
 	"fmt"
 	"github.com/BurntSushi/toml"
 	"github.com/urfave/cli/v2"
+	"github.com/xmapst/NexusImageClean/nexus"
 	"html/template"
 	"os"
 )
