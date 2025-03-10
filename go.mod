@@ -7,7 +7,7 @@ require (
 	github.com/go-openapi/strfmt v0.19.11 // indirect
 	github.com/jedib0t/go-pretty v4.3.0+incompatible
 	github.com/mattn/go-runewidth v0.0.9 // indirect
-	github.com/urfave/cli/v2 v2.27.5
+	github.com/urfave/cli/v2 v2.27.6
 	golang.org/x/sys v0.0.0-20210105210732-16f7687f5001 // indirect
 	gopkg.in/yaml.v2 v2.4.0
 )
