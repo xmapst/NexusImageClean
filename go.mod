@@ -3,7 +3,7 @@ module github.com/xmapst/NexusImageClean
 go 1.15
 
 require (
-	github.com/BurntSushi/toml v1.4.0
+	github.com/BurntSushi/toml v1.5.0
 	github.com/go-openapi/strfmt v0.19.11 // indirect
 	github.com/jedib0t/go-pretty v4.3.0+incompatible
 	github.com/mattn/go-runewidth v0.0.9 // indirect
